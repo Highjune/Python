@@ -2,9 +2,21 @@ import sys
 import printmenu
 import create
 import output
-import filesave
+import filesave 
+import load
+import search
+import delete
+import update
+
 def main():
-    mylist = []
+    try:
+        mylist = load.load_customer()
+    except Exception as ex: 
+        print(ex.args[0])
+    else :
+        pass
+        #print('데이터 파일이 잘 loading 됐습니다.')
+        
     while True :
         menu = printmenu.print_menu()
         if menu == 1 :
@@ -15,13 +27,25 @@ def main():
             output.show_customer(mylist)
             
         elif menu == 3 :
-            pass
+            mycustomer = search.search_customer(mylist)
+            if mycustomer == None : print('찾지 못했습니다.')
+            else  : delete.delete_customer(mylist, mycustomer)
+            
         elif menu == 4 : 
-            pass
+            mycustomer = search.search_customer(mylist)
+            if mycustomer == None : print('찾지 못했습니다.')
+            else  :print(mycustomer)
+            
         elif menu == 5 : 
-            filesave.save_customer(mylist)
+            mycustomer = search.search_customer(mylist)
+            if mycustomer == None : print('찾지 못했습니다.')
+            else  : update.update_customer(mycustomer)
+        elif menu == 6 : 
+            filesave.save_csv(mylist)
+            
         elif menu == 9 :
             print('Program is Over...')
+            filesave.save_customer(mylist)
             sys.exit(0)
 
 
