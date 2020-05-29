@@ -1,0 +1,11 @@
+선별진료소목록.csv -> Oracle Database
+Table name : HealthCenter
+seq(NUMBER(4)
+기준일시(mydate, VARCHAR2(50))
+가능여부(enabled, CHAR(1))
+시도(sido, VARCHAR2(20))
+시군구(gugun, VARCHAR2(50))
+의료기관명(name, VARCHAR2(100))
+주소(address, VARCHAR2(200))
+전화번호(tel, VARCHAR2(60))
+
